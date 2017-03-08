@@ -95,11 +95,11 @@ namespace WebApi2_Beginner.Controllers
         {
             using (var ctx = new PropertyDbContext())
             {
-                var author = await ctx.Locations.FirstOrDefaultAsync(o => o.Id == id);
-                if (author == null)
+                var location = await ctx.Locations.FirstOrDefaultAsync(o => o.Id == id);
+                if (location == null)
                     return NotFound();
 
-                ctx.Locations.Remove(author);
+                ctx.Locations.Remove(location);
                 await ctx.SaveChangesAsync();
 
                 return StatusCode(HttpStatusCode.NoContent);
